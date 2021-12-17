@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="user-info">
+    <h1><%= full_name(@user) %></h1>
+    <p>email: <%= @user.email %></p>
+    <p>phone no.: <%= @user.phone_number %></p>
+    <h3>Your addresses</h3>
+    <div class="user-addresses">
+      <% @user.addresses.each do |a| %>
+        <div class="user-address">
+          <h4><%= a.name %></h4>
+          <p>street: <%= a.street %></p>
+          <p>number: <%= a.number %></p>
+          <p>city: <%= a.city %></p>
+          <p>zip code: <%= a.zip_code %></p>
+          <p>county: <%= a.county %></p>
+          <p>country: <%= a.country %></p>
+          <%= link_to 'Del', user_address_path(@user, a), method: :delete %>
+        </div>
+      <% end %>
+    </div>
+    <div class="edit-user-info">
+      <h3>Your profile</h3>
+      <%= simple_form_for @user do |f| %>
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :phone_number %>
+      <% end %>
+    </div>
+    <div class="add-new-address">
+      <h3>Add new address</h3>
+      <%= simple_form_for([@user, @address]) do |f| %>
+        <%= f.input :name, placeholder: 'Name your address! Ex.: Home, Office...' %>
+        <%= f.input :street %>
+        <%= f.input :number %>
+        <%= f.input :city %>
+        <%= f.input :zip_code %>
+        <%= f.input :county %>
+        <%= f.input :country, collection: countries.map {|c| "#{c}"}, prompt: "choose country" %>
+        <%= f.submit 'Add address' %>
+      <% end %>
+    </div>
+  </div>
+</div>

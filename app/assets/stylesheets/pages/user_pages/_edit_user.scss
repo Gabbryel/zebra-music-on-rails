@@ -1,17 +1,29 @@
 .user-info {
   display: flex;
+  position: relative;
   flex: {
     direction: column;
   }
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 h1 {
   text-align: center;
+  font-size: 28px;
+  margin-bottom: 50px;
+}
 
+h3 {
+  margin: 20px 0 ;
+  font-size: 20px;
+}
+
+p {
+  margin-bottom: 5px;
 }
 
 .user-addresses {
+  position: relative;
   display: flex;
   gap: 0 20px;
   .user-address {
@@ -25,6 +37,35 @@ h1 {
   }
 }
 
-.edit-user-info, .add-new-address {
+#form-edit-user-info, #form-add-new-address {
   display: none;
+  position: absolute;
+  background-color: $white;
+  padding: 50px 30px;
+  margin: 0 5%;
+  width: 90%;
+}
+
+button {
+  width: fit-content;
+  padding: 2px 6px;
+  background-color: $light-gray;
+  border: 1px solid $btn-border !important;
+  box-shadow: 1px 1px 1px 1px #00000030;
+  font-size: 14px;
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+#btn-close-form_edit-user-info,
+#btn-close-form_add-new-address {
+  padding: 1px 5px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.form-control.is-valid  {
+  border-color: $dark;
 }

@@ -1,9 +1,12 @@
 <div class="container">
-  <div class="user-info">
+  <div class="user-info" id='user-info'>
     <h1><%= full_name(@user) %></h1>
+    <h3>User info:</h3>
     <p>email: <%= @user.email %></p>
     <p>phone no.: <%= @user.phone_number %></p>
+    <button id='btn-update-info' class='btn'>update your info</button>
     <h3>Your addresses</h3>
+    <button id='btn-add-address' class='btn'>new address</button>
     <div class="user-addresses">
       <% @user.addresses.each do |a| %>
         <div class="user-address">
@@ -18,15 +21,18 @@
         </div>
       <% end %>
     </div>
-    <div class="edit-user-info">
+    <div id='form-edit-user-info'>
+      <button class='btn' id='btn-close-form_edit-user-info'>&#10005;</button>
       <h3>Your profile</h3>
       <%= simple_form_for @user do |f| %>
         <%= f.input :first_name %>
         <%= f.input :last_name %>
         <%= f.input :phone_number %>
+        <button class='btn'>Update user</button>
       <% end %>
     </div>
-    <div class="add-new-address">
+    <div id="form-add-new-address">
+      <button class='btn' id='btn-close-form_add-new-address'>&#10005;</button>
       <h3>Add new address</h3>
       <%= simple_form_for([@user, @address]) do |f| %>
         <%= f.input :name, placeholder: 'Name your address! Ex.: Home, Office...' %>

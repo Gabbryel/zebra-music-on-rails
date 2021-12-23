@@ -29,8 +29,10 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import updateUserInfo from '../packs/helpers/updateUserinfo';
+import addNewAddress from '../packs/helpers/addNewAddress';
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
+  updateUserInfo();
+  addNewAddress();
 });
